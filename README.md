@@ -41,7 +41,7 @@ Alguns navegadores respondem bem à primeira metade desta técnica, a que consis
 A altura e a largura do elemento foram definidos em 1 pixel e não com zero, como seria mais lógico, porque alguns leitores de ecrã se recusam a ler conteúdo sem comprimento ou largura. Ao ajustar o atributo overflow para o valor hidden, estamos a garantir que o conteúdo não vai estravazar a área de visualização de 1 pixel em caso algum, nomeadamente nos navegadores em que a sua implementação /interpretação se encontra incorrecta. Juntos, estes métodos funcionam de forma transversal a um vasto leque de navegadores, plataformas e leitores de ecrã.
 
 Gráficos utilizados como cabeçalhos
-Os designers sempre pensaram o conteúdo web como algo, quanto mais possível, agradável visualmente. Em vez disso, a linguagem de marcação HTML produz algo de aspecto visual mais suave, sem adição de gráficos ou outros elementos media e privilegia claramente a estrutura do documento atribuindo significado aos elementos que formata. A técnica favorita dos designers que privilegiam o visual é a utilização de gráficos para dar forma aos cabeçalhos de um documento. Esta técnica, mais do que o texto simples, permite aos designers um maior controlo sobre o aspecto e a sensação provocada pelos cabeçalhos. Infelizmente, ao nível da marcação da linguagem HTML, isto produz documentos que não possuem uma boa estrutura semântica. Os leitores de ecrã são incapazes de reconhecer estes elementos, sem uma correcta marcação, como cabeçalhos (i.e. &lt;h1&gt;, &lt;h2&gt;, etc.). Envolver o elemento gráfico com tags de cabeçalho também não resolve, de forma apropriada, o problema. Numa lógica semântica, os cabeçalhos devem ser texto.
+Os designers sempre pensaram o conteúdo web como algo, quanto mais possível, agradável visualmente. Em vez disso, a linguagem de marcação HTML produz algo de aspecto visual mais suave, sem adição de gráficos ou outros elementos media e privilegia claramente a estrutura do documento atribuindo significado aos elementos que formata. A técnica favorita dos designers que privilegiam o visual é a utilização de gráficos para dar forma aos cabeçalhos de um documento. Esta técnica, mais do que o texto simples, permite aos designers um maior controlo sobre o aspecto e a sensação provocada pelos cabeçalhos. Infelizmente, ao nível da marcação da linguagem HTML, isto produz documentos que não possuem uma boa estrutura semântica. Os leitores de ecrã são incapazes de reconhecer estes elementos, sem uma correcta marcação, como cabeçalhos (i.e. `<h1>` e `<h2>`, etc.). Envolver o elemento gráfico com tags de cabeçalho também não resolve, de forma apropriada, o problema. Numa lógica semântica, os cabeçalhos devem ser texto.
 
 Diversas têm sido as técnicas apresentadas que permitem aos criadores web usar gráficos como cabeçalhos em documentos semanticamente correctos. A primeira, e a mais amplamente conhecida, é a técnica de substituição da imagem de Todd Fahrner Using background-image to replace text. Logo após a sua introdução, peritos em acessibilidade web notaram que a técnica tornava o conteúdo indisponível aos leitores de ecrã Facts and opinion about Faherner image replacement. Não muito tempo depois, diversas pessoas introduziram técnicas alternativas, tais como a técnica "off-to-left-technique" (fora-para-a-esquerda) de Bob Easton Screen reader visibility, o método de texto-indentado de Mike Rundle Accessible image replacement, e outras. Todas estas técnicas tiveram êxito em esconder o conteúdo HTML; algumas delas tiveram êxito em tornar o conteúdo acessível aos leitores de ecrã; e algumas delas funcionam mesmo com os navegadores e sistemas operativos mais utilizados. No entanto, nenhuma destas técnicas logrou ter êxito em simultâneo nestes três campos (i.e. leitores de ecrã, navegadores web e sistemas operativos), embora haja umas melhores do que outras.
 
@@ -72,13 +72,13 @@ Na página HTML a classe de CSS deverá então ser referenciada no interior da t
   </span>
 </h1>
 ```
-Links "saltar navegação"
+### Links "saltar navegação"
 É frequente os designers resistirem à ideia de colocarem nas suas páginas um link de texto que permita aos utilizadores de leitores de ecrã saltar os links que compõem o menu de navegação, conforme é solicitado pela section 508 da Rehabilitation Act nos Estados Unidos U.S. Access Board (2001). Summary of Section 508 Standards, e conforme recomendado a nível internacional pelas Directrizes de Acessibilidade para o Conteúdo Web (WCAG), versão 1.0. Adicionar um link para "saltar navegação" numa página web interfere no design original e, muitas vezes, obriga o designer a alterar a maquetagem da página.
 Alguns designers responderam à solicitação escondendo o texto dentro do atributo alt de uma imagem, ou utilizando outros métodos que escondem, por completo, o link dos utilizadores que usam o sentido da visão para acesso à informação. A grande desvantagem de colocar este link invisível fica a dever-se ao facto de o tornar indisponível a todos os que fazem uso da visão para navegar na web. E há alguns destes que o iriam considerar de extrema utilidade, como é o caso das pessoas que têm dificuldades motoras graves. Para estes utilizadores o uso de um dispositivo apontador como o rato é limitada ou mesmo impossível. Alguns utilizadores com dificuldades motoras, nomeadamente ao nível dos membros superiores, usam com frequência dispositivos e softwares que actuam por varrimento. Estes utilizadores apreciariam o uso de um link para "saltar a navegação" em vez de recorrerem repetidamente à tecla tab, ou equivalente em termos de varrimento, para passar por todas as opções do menu, ou outro conteúdo, até atingir o conteúdo principal da página.
 
 Uma forma de conciliar os desejos, dos designers gráficos, que privilegiam a imagem, dos utilizadores que usam leitores de ecrã e dos utilizadores com deficiências motoras, que fazem uso de softwares de varrimento, é utilizar a técnica que esconde o link "saltar a navegação" mas que fica visível quando é alcançado ao navegar com a tecla tab: nesta altura o link torna-se visível a quem faz uso da visão para navegar na web. Isto irá permitir que ambos os utilizadores: cegos e os que fazem uso da visão tirem vantagem da funcionalidade do link "saltar a navegação", assim como não introduz atrito no trabalho do designer.
 
-Para concretizar este objectivo, o link encontra-se, por defeito, escondido - para o efeito usa-se a técnica descrita neste artigo - mas torna-se visível quando o link recebe o foco do teclado. O que é o mesmo que dizer que são criados dois estilos. Um para o elemento link <a> e um outro para o pseudo-elemento foco do link <a:focus>. O estilo para o pseudo-elemento <a:focus> ficará apenas activo quando o utlizador usar a tecla tab sob o link, e o link voltará ao seu estado anterior, ou seja, o seu estado por defeito (i.e. invisível), quando o utilizador pressionar tab sob um outro elemento link.
+Para concretizar este objectivo, o link encontra-se, por defeito, escondido - para o efeito usa-se a técnica descrita neste artigo - mas torna-se visível quando o link recebe o foco do teclado. O que é o mesmo que dizer que são criados dois estilos. Um para o elemento link `<a>` e um outro para o pseudo-elemento foco do link `<a:focus>`. O estilo para o pseudo-elemento `<a:focus>` ficará apenas activo quando o utlizador usar a tecla tab sob o link, e o link voltará ao seu estado anterior, ou seja, o seu estado por defeito (i.e. invisível), quando o utilizador pressionar tab sob um outro elemento link.
 
 ### Amostra Código 3
 O seguinte código deverá aparecer na folha de estilo:
@@ -109,14 +109,16 @@ Um dos inconvenientes desta ideia, em termos conceptuais, é a aparição repent
 ### Formulários dentro de tabelas de dados
 Para um utilizador que faz uso da visão, as células de cabeçalho de uma tabela podem actuar com uma dupla função: por um lado, o de organizarem o conteúdo da tabela e por outro, o de servirem de etiquetas para os campos de edição do formulário que se encontra dentro dessa tabela. Isto mesmo pode ser visto no recorte de ecrã abaixo, que nos mostra um formulário construído dentro de uma tabela.
 
-<img alt="Tabela com cabeçalhos, composta por 3 colunas e 5 linhas. As células de dados contêm elementos do tipo formulário, mas sem etiquetas. Os utilizadores que fazem uso da visão poderão juntar os cabeçalhos da tabela com os respectivos elementos do formulário tal como se os cabeçalhos fossem etiquetas de formulário." src="https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig01.jpg">
+![Tabela com cabeçalhos, composta por 3 colunas e 5 linhas. As células de dados contêm elementos do tipo formulário, mas sem etiquetas. Os utilizadores que fazem uso da visão poderão juntar os cabeçalhos da tabela com os respectivos elementos do formulário tal como se os cabeçalhos fossem etiquetas de formulário](https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig01.jpg)
+
 Figura 1. Tabela de dados utilizada para atribuir "labels" (etiquetar) aos elementos de um formulário
 
-Para um utilizador de leitor de ecrã, os cabeçalhos em linha ou em coluna da tabela são em certa medida úteis para compreender o layout da mesma, mas os cabeçalhos não funcionam como etiquetas para o formulário que se encontra dentro da tabela e que o formata. Quando os utilizadores de leitor de ecrã passam num formulário, de um elemento para outro, não irão ouvir os cabeçalhos da tabela. Para sermos mais exactos, eles não irão ouvir, de todo, qualquer etiqueta. Para os leitores de ecrã os cabeçalhos da tabela não servem de etiquetas para o formulário. Os leitores de ecrã necessitam de etiquetas textuais codificadas no próprio formulário. Idealmente, estas etiquetas devem ser envelopadas na tag <label>, tal como é recomendado pelas WCAG 1.0. Pode ainda, adicionalmente, etiquetar e agrupar elementos usando as tags <fieldset> e <legend>.
+Para um utilizador de leitor de ecrã, os cabeçalhos em linha ou em coluna da tabela são em certa medida úteis para compreender o layout da mesma, mas os cabeçalhos não funcionam como etiquetas para o formulário que se encontra dentro da tabela e que o formata. Quando os utilizadores de leitor de ecrã passam num formulário, de um elemento para outro, não irão ouvir os cabeçalhos da tabela. Para sermos mais exactos, eles não irão ouvir, de todo, qualquer etiqueta. Para os leitores de ecrã os cabeçalhos da tabela não servem de etiquetas para o formulário. Os leitores de ecrã necessitam de etiquetas textuais codificadas no próprio formulário. Idealmente, estas etiquetas devem ser envelopadas na tag `<label>`, tal como é recomendado pelas WCAG 1.0. Pode ainda, adicionalmente, etiquetar e agrupar elementos usando as tags `<fieldset>` e `<legend>`.
 
-No entanto, neste exemplo em particular, os utilizadores que usam a visão não irão obter qualquer benefício adicional a partir das etiquetas textuais. Para eles, este tipo de etiquetas textuais serão redundantes aos cabeçalhos da tabela, desde que, no estrito senso visual, estes cabeçalhos constituam de facto etiquetas adequadas aos elementos do formulário. Eis como a mesma tabela ficaria visualmente se fossem adicionadas etiquetas textuais padrão, com a tag <label>, a tag <fieldset> e a tag <legend>:
+No entanto, neste exemplo em particular, os utilizadores que usam a visão não irão obter qualquer benefício adicional a partir das etiquetas textuais. Para eles, este tipo de etiquetas textuais serão redundantes aos cabeçalhos da tabela, desde que, no estrito senso visual, estes cabeçalhos constituam de facto etiquetas adequadas aos elementos do formulário. Eis como a mesma tabela ficaria visualmente se fossem adicionadas etiquetas textuais padrão, com a tag `<label>`, a tag `<fieldset>`e a tag `<legend>`:
 
-<img alt="Esta é a mesma tabela do primeiro exemplo, mas foram adicionadas etiquetas textuais a cada elemento do formulário." src="https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig02.jpg">
+![Esta é a mesma tabela do primeiro exemplo, mas foram adicionadas etiquetas textuais a cada elemento do formulário](https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig02.jpg)
+
 Figura 2. Formulário com etiquetas dentro da informação da tabela.
 
 Apesar desta versão da tabela agradar aos utiizadores de leitor de ecrã, muitos utilizadores que usam a visão para a ler vão-se queixar que estas adições só constituem elementos de distracção. Para os utilizadores que usam a visão, a tabela, simplesmente, se tornou mais atafolhada, com redundância excessiva de palavras, e mais difícil de entender num simples relance. Esta é uma situação na qual a adição de marcação com a intenção de beneficiar os utlizadores de leitor de ecrã interfere com a acessibilidade, ou pelo menos a utilização-amigável, do conteúdo por parte dos utilizadores que usam a visão.
@@ -133,16 +135,20 @@ O código que se segue deve aparecer na folha de estilo:
   overflow: hidden;
 }
 ```
+
 A classe de CSS deveria então ser referenciada a partir do interior do elemento escondido, conforme se mostra:
+
 ```html
 (...)
 <label for="amembers" class="hidden">Número de membros da equipa A</label>
 (...)
 ```
-Múltiplos elementos de formulário que "partilham" uma única etiqueta
+
+### Múltiplos elementos de formulário que "partilham" uma única etiqueta
 Outro exemplo de incompatibilidade aparente entre as necessidades dos utilizadores de leitores de ecrã e a dos utilizadores que usam a visão ocorre quando os designers concebem múltiplos campos de edição de formulário que dependem da mesma etiqueta. Um exemplo típico disto mesmo é quando dois, ou mais campos de edição são usados para dar entrada de números de telefone.
 
-<img alt="Às palavras 'número de telefone' seguem-se 4 caixas de edição de texto, que intencionalmente foram colocadas para introduzir o indicativo de área, os três primeiros digitos, os últimos quatro digitos, ao que se segue a extensão" src="https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig03.jpg">
+![Às palavras 'número de telefone' seguem-se 4 caixas de edição de texto, que intencionalmente foram colocadas para introduzir o indicativo de área, os três primeiros digitos, os últimos quatro digitos, ao que se segue a extensão](https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig03.jpg)
+
 Figura 3. Etiquetas de formulário que se aplicam a mais do que um elemento de formulário.
 
 No recorte de ecrã acima, muitos dos utilizadores que façam uso da visão para o interpretar irão compreender que a cada uma das caixas de edição corresponde uma determinada secção, parte de um número de telefone padronizado. Os utilizadores de leitor de ecrã podem ser induzidos a introduzir, logo na primeira caixa, o número de telefone completo. Quando descobrirem que a caixa os limita a introduzir um máximo de 3 caracteres, irão, provavelmente, ficar confusos. Alguns utilizadores irão ser capazes de proceder a uma análise contextual prévia antes de iniciarem a introdução, mas este tipo de experimentação leva tempo, e é desnecessária.
@@ -198,8 +204,13 @@ A mesma técnica de CSS pode ser utilizada para fornecer informação contextual
 
 Por exemplo, sítios com sistemas de menu complexos são muitas vezes desenhados com interfaces gráficas que organizam as hierarquias do menu em espaços visuais. Os "separadores" visuais são frequentemente utilizados para este propósito. Muitas vezes, o sistema de menu é concebido de tal forma que coloca em evidência a posição actual do utilizador na estrutura hierárquica do menu. Muita desta informação é perdida pelos utilizadores de leitor de ecrã porque toda ela é transmitida visualmente. Poderá, neste caso, ser apropriado colocar frases escondidas que permitam aos utilizadores de leitor de ecrã orientarem-se neste tipo de estrutura. As frases que poderão ser úteis e apropriadas inserir incluem:
 
+- Início do menu principal.
+- Fim do menu principal.
+- Início [e fim] do submenu Produtos e Serviços.
+- Você está aqui [seguido do texto do item actual na estrutura hierárquica do menu].
+- Anúncio [coloque-o, por exemplo, antes de um anúncio tipo banner].
 
-*Uma palavra de precaução*: todas estas frases devem ser breves, e devem ser, de todo, utilizadas moderadamente. Muitos sítios web não necessitam de recorrer a este tipo de ajuda contextual. Quanto mais simples e limpo for o design, menor será a necessidade de utilização desta técnica. Os designers nao devem sobrecarregar os utilizadores de leitor de ecrã com texto que lhes forneça pouco ou nenhum valor acrescentado. Esta técnica pode dar indicações contextuais importantes que de outra forma ficariam adstritas à natureza visual mas, uma vez que os utilizadores de leitor de ecrã têm de ouvir qualquer texto que esteja na página, estas indicações devem permanecer no limiar mínimo.
+**Uma palavra de precaução**: todas estas frases devem ser breves, e devem ser, de todo, utilizadas moderadamente. Muitos sítios web não necessitam de recorrer a este tipo de ajuda contextual. Quanto mais simples e limpo for o design, menor será a necessidade de utilização desta técnica. Os designers nao devem sobrecarregar os utilizadores de leitor de ecrã com texto que lhes forneça pouco ou nenhum valor acrescentado. Esta técnica pode dar indicações contextuais importantes que de outra forma ficariam adstritas à natureza visual mas, uma vez que os utilizadores de leitor de ecrã têm de ouvir qualquer texto que esteja na página, estas indicações devem permanecer no limiar mínimo.
 
 ### Amostra Código 6
 ```css
@@ -212,7 +223,9 @@ Por exemplo, sítios com sistemas de menu complexos são muitas vezes desenhados
   overflow: hidden;
 }
 ```
+
 A classe de CSS deve então ser referenciada no interior da tag do elemento a ser escondido, como se mostra a seguir:
+
 ```html
 <div class="hidden">Início do menu principal.</div>
 ...
@@ -228,10 +241,9 @@ Entendo. Vou criar uma única resposta em Markdown sem quebras nos blocos de có
 3. Preservar formatação, links e imagens
 4. Manter consistência na sintaxe
 
-```markdown
 ### Múltiplos elementos de formulário que "partilham" uma única etiqueta
 
-Outro exemplo de incompatibilidade aparente entre as necessidades dos utilizadores de leitores de ecrã e a dos utilizadores que usam a visão ocorre quando os *designers* concebem múltiplos campos de edição de formulário que dependem da mesma etiqueta. Um exemplo típico disto mesmo é quando dois, ou mais campos de edição são usados para dar entrada de números de telefone.
+Outro exemplo de incompatibilidade aparente entre as necessidades dos utilizadores de leitores de ecrã e a dos utilizadores que usam a visão ocorre quando os **designers** concebem múltiplos campos de edição de formulário que dependem da mesma etiqueta. Um exemplo típico disto mesmo é quando dois, ou mais campos de edição são usados para dar entrada de números de telefone.
 
 ![Às palavras 'número de telefone' seguem-se 4 caixas de edição de texto, que intencionalmente foram colocadas para introduzir o indicativo de área, os três primeiros digitos, os últimos quatro digitos, ao que se segue a extensão](https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig03.jpg)
 
