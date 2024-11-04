@@ -41,11 +41,11 @@ Alguns navegadores respondem bem à primeira metade desta técnica, a que consis
 A altura e a largura do elemento foram definidos em 1 pixel e não com zero, como seria mais lógico, porque alguns leitores de ecrã se recusam a ler conteúdo sem comprimento ou largura. Ao ajustar o atributo overflow para o valor hidden, estamos a garantir que o conteúdo não vai estravazar a área de visualização de 1 pixel em caso algum, nomeadamente nos navegadores em que a sua implementação /interpretação se encontra incorrecta. Juntos, estes métodos funcionam de forma transversal a um vasto leque de navegadores, plataformas e leitores de ecrã.
 
 Gráficos utilizados como cabeçalhos
-Os designers sempre pensaram o conteúdo web como algo, quanto mais possível, agradável visualmente. Em vez disso, a linguagem de marcação HTML produz algo de aspecto visual mais suave, sem adição de gráficos ou outros elementos media e privilegia claramente a estrutura do documento atribuindo significado aos elementos que formata. A técnica favorita dos designers que privilegiam o visual é a utilização de gráficos para dar forma aos cabeçalhos de um documento. Esta técnica, mais do que o texto simples, permite aos designers um maior controlo sobre o aspecto e a sensação provocada pelos cabeçalhos. Infelizmente, ao nível da marcação da linguagem HTML, isto produz documentos que não possuem uma boa estrutura semântica. Os leitores de ecrã são incapazes de reconhecer estes elementos, sem uma correcta marcação, como cabeçalhos (i.e. &le;h1&gt;, &lt;h2&gt;, etc.). Envolver o elemento gráfico com tags de cabeçalho também não resolve, de forma apropriada, o problema. Numa lógica semântica, os cabeçalhos devem ser texto.
+Os designers sempre pensaram o conteúdo web como algo, quanto mais possível, agradável visualmente. Em vez disso, a linguagem de marcação HTML produz algo de aspecto visual mais suave, sem adição de gráficos ou outros elementos media e privilegia claramente a estrutura do documento atribuindo significado aos elementos que formata. A técnica favorita dos designers que privilegiam o visual é a utilização de gráficos para dar forma aos cabeçalhos de um documento. Esta técnica, mais do que o texto simples, permite aos designers um maior controlo sobre o aspecto e a sensação provocada pelos cabeçalhos. Infelizmente, ao nível da marcação da linguagem HTML, isto produz documentos que não possuem uma boa estrutura semântica. Os leitores de ecrã são incapazes de reconhecer estes elementos, sem uma correcta marcação, como cabeçalhos (i.e. &lt;h1&gt;, &lt;h2&gt;, etc.). Envolver o elemento gráfico com tags de cabeçalho também não resolve, de forma apropriada, o problema. Numa lógica semântica, os cabeçalhos devem ser texto.
 
 Diversas têm sido as técnicas apresentadas que permitem aos criadores web usar gráficos como cabeçalhos em documentos semanticamente correctos. A primeira, e a mais amplamente conhecida, é a técnica de substituição da imagem de Todd Fahrner Using background-image to replace text. Logo após a sua introdução, peritos em acessibilidade web notaram que a técnica tornava o conteúdo indisponível aos leitores de ecrã Facts and opinion about Faherner image replacement. Não muito tempo depois, diversas pessoas introduziram técnicas alternativas, tais como a técnica "off-to-left-technique" (fora-para-a-esquerda) de Bob Easton Screen reader visibility, o método de texto-indentado de Mike Rundle Accessible image replacement, e outras. Todas estas técnicas tiveram êxito em esconder o conteúdo HTML; algumas delas tiveram êxito em tornar o conteúdo acessível aos leitores de ecrã; e algumas delas funcionam mesmo com os navegadores e sistemas operativos mais utilizados. No entanto, nenhuma destas técnicas logrou ter êxito em simultâneo nestes três campos (i.e. leitores de ecrã, navegadores web e sistemas operativos), embora haja umas melhores do que outras.
 
-Amostra de Código 2
+### Amostra de Código 2
 Para implementar a técnica descrita neste artigo, deve então colocar o seguinte código na folha de estilo:
 ```css
 .hidden {
@@ -80,7 +80,7 @@ Uma forma de conciliar os desejos, dos designers gráficos, que privilegiam a im
 
 Para concretizar este objectivo, o link encontra-se, por defeito, escondido - para o efeito usa-se a técnica descrita neste artigo - mas torna-se visível quando o link recebe o foco do teclado. O que é o mesmo que dizer que são criados dois estilos. Um para o elemento link <a> e um outro para o pseudo-elemento foco do link <a:focus>. O estilo para o pseudo-elemento <a:focus> ficará apenas activo quando o utlizador usar a tecla tab sob o link, e o link voltará ao seu estado anterior, ou seja, o seu estado por defeito (i.e. invisível), quando o utilizador pressionar tab sob um outro elemento link.
 
-Amostra Código 3
+### Amostra Código 3
 O seguinte código deverá aparecer na folha de estilo:
 ```css
 #skip a, #skip a:hover, #skip a:visited {
@@ -106,7 +106,7 @@ Na página HTML a classe de CSS (skip) deverá ser referenciada no interior da t
 ```
 Um dos inconvenientes desta ideia, em termos conceptuais, é a aparição repentina e inesperada de um link que estava anteriormente invisível, que poderá confundir o utilizador que usa a visão e que use o teclado para navegar. Para os utilizadores de leitor de ecrã isto não será um problema porque, ao não verem o ecrã, não se apercebem que subitamente surgiu um link novo. A partir da perspectiva destes utilizadores o link sempre esteve lá. E esta é a perspectiva mais correcta pois o efeito visual é apenas ilusório. Quanto aos utilizadores de rato, nunca irão ver o link, pelo que esta questão é completamente transparente para eles.
 
-Formulários dentro de tabelas de dados
+### Formulários dentro de tabelas de dados
 Para um utilizador que faz uso da visão, as células de cabeçalho de uma tabela podem actuar com uma dupla função: por um lado, o de organizarem o conteúdo da tabela e por outro, o de servirem de etiquetas para os campos de edição do formulário que se encontra dentro dessa tabela. Isto mesmo pode ser visto no recorte de ecrã abaixo, que nos mostra um formulário construído dentro de uma tabela.
 
 <img alt="Tabela com cabeçalhos, composta por 3 colunas e 5 linhas. As células de dados contêm elementos do tipo formulário, mas sem etiquetas. Os utilizadores que fazem uso da visão poderão juntar os cabeçalhos da tabela com os respectivos elementos do formulário tal como se os cabeçalhos fossem etiquetas de formulário." src="https://www.acessibilidade.gov.pt/wp-content/uploads/2020/04/accao_fig01.jpg">
@@ -121,7 +121,7 @@ Figura 2. Formulário com etiquetas dentro da informação da tabela.
 
 Apesar desta versão da tabela agradar aos utiizadores de leitor de ecrã, muitos utilizadores que usam a visão para a ler vão-se queixar que estas adições só constituem elementos de distracção. Para os utilizadores que usam a visão, a tabela, simplesmente, se tornou mais atafolhada, com redundância excessiva de palavras, e mais difícil de entender num simples relance. Esta é uma situação na qual a adição de marcação com a intenção de beneficiar os utlizadores de leitor de ecrã interfere com a acessibilidade, ou pelo menos a utilização-amigável, do conteúdo por parte dos utilizadores que usam a visão.
 
-Amostra do código 4
+### Amostra do código 4
 O código que se segue deve aparecer na folha de estilo:
 ```css
 .hidden {
